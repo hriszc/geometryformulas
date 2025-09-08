@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Comprehensive Geometry Formulas (2D &amp; 3D) — Printable A4</title>
+<style>
+  :root{
+    --ink:#0f172a;          /* slate-900 */
+    --muted:#475569;        /* slate-600 */
+    --accent:#2563eb;       /* blue-600 */
+    --paper:#ffffff;
+    --card:#f8fafc;         /* slate-50 */
+    --line:#94a3b8;         /* slate-400 */
+  }
+  html,body{background:var(--paper); color:var(--ink); font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; line-height:1.55; margin:0; padding:0;}
+  header{position:sticky; top:0; background:linear-gradient(#fff, #fff9); backdrop-filter:saturate(180%) blur(8px); border-bottom:1px solid var(--line); z-index:10;}
+  header .bar{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 18px; max-width:1024px; margin:0 auto;}
+  h1{font-size:clamp(20px, 3vw, 28px); margin:0; letter-spacing:.2px;}
+  .btn{appearance:none; border:1px solid var(--accent); background:var(--accent); color:#fff; padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:600;}
+  .btn.secondary{background:transparent; color:var(--accent);}
+  main{max-width:1024px; margin:0 auto; padding:18px;}
+  .note{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin:16px 0;}
+  h2{margin-top:28px; border-bottom:2px solid var(--line); padding-bottom:6px;}
+  h3{margin-top:20px; margin-bottom:6px;}
+  .shape{display:grid; grid-template-columns: minmax(260px, 340px) 1fr; gap:16px; align-items:start; padding:14px; border:1px solid var(--line); border-radius:12px; background:#fff; margin:14px 0;}
+  .shape .diagram{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+  .shape svg{width:100%; height:auto; border:1px solid var(--line); background:#fff; border-radius:8px;}
+  .caption{color:var(--muted); font-size:12px; margin-top:4px;}
+  ul.formulas{margin:8px 0 0 18px;}
+  li{margin:4px 0;}
+  code.var{font-weight:700; color:#111827; background:#eef2ff; padding:0 4px; border-radius:6px;}
+  .vars{display:flex; flex-wrap:wrap; gap:6px; font-size:12px; color:var(--muted); margin-top:6px;}
+  .vars span{background:#f1f5f9; border:1px solid var(--line); padding:2px 6px; border-radius:999px;}
+  .small{font-size:12px; color:var(--muted);}
+  /* Print & A4 */
+  @page{ size:A4; margin:12mm; }
+  @media print{
+    header{display:none !important;}
+    .shape{break-inside:avoid;}
+    .page-break{break-before:page;}
+    a[href]:after{ content:""; } /* hide url after links */
+  }
+</style>
+</head>
+<body>
+<header class="no-print">
+<div class="bar">
+<h1>Comprehensive Geometry Formulas — 2D &amp; 3D (Student Edition)</h1>
+<div class="actions">
+<button class="btn" onclick="window.print()">Print / Export to PDF</button>
+</div>
+</div>
+</header>
+<main>
+<div class="note">
+<strong>How to use:</strong> This sheet uses native <em>MathML</em> for clean, LaTeX‑style math rendering in modern browsers (Chrome, Edge, Firefox, Safari).
+    Click <em>Print / Export to PDF</em> to save an A4 PDF for study.
+    Variables are consistently named: <code class="var">a, b, c</code> (sides), <code class="var">l, w, h</code> (length, width, height),
+    <code class="var">r, d</code> (radius, diameter), <code class="var">P</code> (perimeter), <code class="var">A</code> (area),
+    <code class="var">SA</code> (surface area), <code class="var">V</code> (volume), <code class="var">s</code> (semi‑perimeter or slant height by context).
+  </div>
+<h2>2D Shapes</h2>
+<!-- Triangle -->
+<section class="shape" id="triangle">
+<div>
+<strong>Triangle</strong>
+<div class="diagram">
+<!-- clean line diagram (scalene) -->
+<svg aria-label="Triangle, line diagram" viewbox="0 0 200 150">
+<defs>
+<marker id="dot" markerheight="4" markerwidth="4" refx="5" refy="5" viewbox="0 0 10 10">
+<circle cx="5" cy="5" fill="#111" r="3"></circle>
+</marker>
+</defs>
+<polygon fill="none" points="20,120 170,120 70,30" stroke="#111" stroke-width="2"></polygon>
+<!-- height from apex -->
+<line stroke="#111" stroke-dasharray="5 4" stroke-width="1" x1="70" x2="70" y1="30" y2="120"></line>
+<path d="M70,120 h10 v-10" fill="none" stroke="#111" stroke-width="1"></path>
+<text font-size="12" x="90" y="135">base = <tspan font-weight="bold">b</tspan></text>
+<text font-size="12" x="74" y="75">h</text>
+<text font-size="12" x="35" y="80">a</text>
+<text font-size="12" x="140" y="80">c</text>
+</svg>
+<!-- shaded right triangle -->
+<svg aria-label="Right triangle, shaded" viewbox="0 0 200 150">
+<polygon fill="#c7d2fe" points="20,120 170,120 20,40" stroke="#111" stroke-width="2"></polygon>
+<path d="M20,120 v-10 h10" fill="none" stroke="#111" stroke-width="1"></path>
+<text font-size="12" x="90" y="135">a</text>
+<text font-size="12" x="10" y="85">b</text>
+<text font-size="12" x="90" y="75">c</text>
+</svg>
+</div>
+<div class="vars">
+<span>Perimeter <strong>P</strong></span>
+<span>Area <strong>A</strong></span>
+<span>Right triangle hypotenuse <strong>c</strong></span>
+<span>Semi‑perimeter <strong>s</strong></span>
+</div>
+</div>
+<div>
+<ul class="formulas">
+<li>
+<strong>Perimeter:</strong>
+<math display="block">
+<mrow><mi>P</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>+</mo><mi>c</mi></mrow>
+</math>
+</li>
+<li>
+<strong>Area (with base <em>b</em>, height <em>h</em>):</strong>
+<math display="block">
+<mrow><mi>A</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>b</mi><mi>h</mi></mrow>
+</math>
+</li>
+<li>
+<strong>Heron's formula:</strong>
+<div class="small">Let <math><mrow><mi>s</mi><mo>=</mo><mfrac><mrow><mi>a</mi><mo>+</mo><mi>b</mi><mo>+</mo><mi>c</mi></mrow><mn>2</mn></mfrac></mrow></math>. Then</div>
+<math display="block">
+<mrow><mi>A</mi><mo>=</mo><msqrt><mrow><mi>s</mi><mo>(</mo><mi>s</mi><mo>-</mo><mi>a</mi><mo>)</mo><mo>(</mo><mi>s</mi><mo>-</mo><mi>b</mi><mo>)</mo><mo>(</mo><mi>s</mi><mo>-</mo><mi>c</mi><mo>)</mo></mrow></msqrt></mrow>
+</math>
+</li>
+<li>
+<strong>Pythagorean theorem (right triangle):</strong>
+<math display="block">
+<mrow><msup><mi>c</mi><mn>2</mn></msup><mo>=</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow>
+</math>
+</li>
+<li>
+<strong>Law of cosines:</strong>
+<math display="block">
+<mrow>
+<msup><mi>c</mi><mn>2</mn></msup>
+<mo>=</mo>
+<msup><mi>a</mi><mn>2</mn></msup>
+<mo>+</mo>
+<msup><mi>b</mi><mn>2</mn></msup>
+<mo>-</mo>
+<mn>2</mn><mi>a</mi><mi>b</mi><mo>⁢</mo><mi>cos</mi><mo>⁡</mo><mi>γ</mi>
+</mrow>
+</math>
+</li>
+</ul>
+</div>
+</section>
+<!-- Square -->
+<section class="shape" id="square">
+<div>
+<strong>Square</strong>
+<div class="diagram">
+<svg aria-label="Square, line diagram" viewbox="0 0 200 160">
+<rect fill="none" height="100" stroke="#111" stroke-width="2" width="100" x="30" y="30"></rect>
+<line stroke="#64748b" stroke-dasharray="5 4" stroke-width="1" x1="30" x2="130" y1="30" y2="130"></line>
+<text font-size="12" x="75" y="150">a</text>
+<text font-size="12" x="92" y="78">d</text>
+</svg>
+<svg aria-label="Square, shaded" viewbox="0 0 200 160">
+<rect fill="#e2e8f0" height="100" stroke="#111" stroke-width="2" width="100" x="30" y="30"></rect>
+<text font-size="12" x="75" y="150">a</text>
+</svg>
+</div>
+<div class="vars"><span>side <strong>a</strong></span><span>diagonal <strong>d</strong></span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Perimeter:</strong>
+<math display="block"><mrow><mi>P</mi><mo>=</mo><mn>4</mn><mi>a</mi></mrow></math>
+</li>
+<li><strong>Area:</strong>
+<math display="block"><mrow><mi>A</mi><mo>=</mo><msup><mi>a</mi><mn>2</mn></msup></mrow></math>
+</li>
+<li><strong>Diagonal:</strong>
+<math display="block"><mrow><mi>d</mi><mo>=</mo><mi>a</mi><msqrt><mn>2</mn></msqrt></mrow></math>
+</li>
+</ul>
+</div>
+</section>
+<!-- Rectangle -->
+<section class="shape" id="rectangle">
+<div>
+<strong>Rectangle</strong>
+<div class="diagram">
+<svg aria-label="Rectangle, line diagram" viewbox="0 0 220 150">
+<rect fill="none" height="80" stroke="#111" stroke-width="2" width="140" x="30" y="40"></rect>
+<line stroke="#64748b" stroke-dasharray="5 4" stroke-width="1" x1="30" x2="170" y1="40" y2="120"></line>
+<text font-size="12" x="95" y="135">l</text>
+<text font-size="12" x="18" y="85">w</text>
+<text font-size="12" x="100" y="85">d</text>
+</svg>
+<svg aria-label="Rectangle, shaded" viewbox="0 0 220 150">
+<rect fill="#fde68a" height="80" stroke="#111" stroke-width="2" width="140" x="30" y="40"></rect>
+<text font-size="12" x="95" y="135">l</text>
+<text font-size="12" x="18" y="85">w</text>
+</svg>
+</div>
+<div class="vars"><span>length <strong>l</strong></span><span>width <strong>w</strong></span><span>diagonal <strong>d</strong></span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Perimeter:</strong>
+<math display="block"><mrow><mi>P</mi><mo>=</mo><mn>2</mn><mo>(</mo><mi>l</mi><mo>+</mo><mi>w</mi><mo>)</mo></mrow></math>
+</li>
+<li><strong>Area:</strong>
+<math display="block"><mrow><mi>A</mi><mo>=</mo><mi>l</mi><mi>w</mi></mrow></math>
+</li>
+<li><strong>Diagonal:</strong>
+<math display="block"><mrow><mi>d</mi><mo>=</mo><msqrt><mrow><msup><mi>l</mi><mn>2</mn></msup><mo>+</mo><msup><mi>w</mi><mn>2</mn></msup></mrow></msqrt></mrow></math>
+</li>
+</ul>
+</div>
+</section>
+<!-- Parallelogram -->
+<section class="shape" id="parallelogram">
+<div>
+<strong>Parallelogram</strong>
+<div class="diagram">
+<svg aria-label="Parallelogram" viewbox="0 0 240 150">
+<polygon fill="none" points="30,120 170,120 210,40 70,40" stroke="#111" stroke-width="2"></polygon>
+<line stroke="#64748b" stroke-dasharray="5 4" stroke-width="1" x1="70" x2="70" y1="40" y2="120"></line>
+<path d="M70,120 h10 v-10" fill="none" stroke="#111" stroke-width="1"></path>
+<text font-size="12" x="110" y="135">b</text>
+<text font-size="12" x="185" y="82">a</text>
+<text font-size="12" x="75" y="78">h</text>
+</svg>
+<svg aria-label="Parallelogram, shaded" viewbox="0 0 240 150">
+<polygon fill="#fee2e2" points="30,120 170,120 210,40 70,40" stroke="#111" stroke-width="2"></polygon>
+</svg>
+</div>
+<div class="vars"><span>adjacent sides <strong>a,b</strong></span><span>height <strong>h</strong></span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Perimeter:</strong>
+<math display="block"><mrow><mi>P</mi><mo>=</mo><mn>2</mn><mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>)</mo></mrow></math>
+</li>
+<li><strong>Area:</strong>
+<math display="block"><mrow><mi>A</mi><mo>=</mo><mi>b</mi><mi>h</mi></mrow></math>
+</li>
+</ul>
+</div>
+</section>
+<!-- Rhombus -->
+<section class="shape" id="rhombus">
+<div>
+<strong>Rhombus</strong>
+<div class="diagram">
+<svg aria-label="Rhombus" viewbox="0 0 220 160">
+<polygon fill="none" points="110,30 160,80 110,130 60,80" stroke="#111" stroke-width="2"></polygon>
+<line stroke="#64748b" stroke-dasharray="5 4" stroke-width="1" x1="110" x2="110" y1="30" y2="130"></line>
+<line stroke="#64748b" stroke-dasharray="5 4" stroke-width="1" x1="60" x2="160" y1="80" y2="80"></line>
+<text font-size="12" x="118" y="60">d1</text>
+<text font-size="12" x="118" y="92">d2</text>
+</svg>
+<svg aria-label="Rhombus, shaded" viewbox="0 0 220 160">
+<polygon fill="#e9d5ff" points="110,30 160,80 110,130 60,80" stroke="#111" stroke-width="2"></polygon>
+</svg>
+</div>
+<div class="vars"><span>diagonals <strong>d1, d2</strong></span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Perimeter:</strong>
+<math display="block"><mrow><mi>P</mi><mo>=</mo><mn>4</mn><mi>a</mi></mrow></math>
+<span class="small">(all sides equal to <code class="var">a</code>)</span>
+</li>
+<li><strong>Area:</strong>
+<math display="block"><mrow><mi>A</mi><mo>=</mo><mfrac><mrow><msub><mi>d</mi><mn>1</mn></msub><mo>⋅</mo><msub><mi>d</mi><mn>2</mn></msub></mrow><mn>2</mn></mfrac></mrow></math>
+</li>
+</ul>
+</div>
+</section>
+<!-- Trapezoid -->
+<section class="shape" id="trapezoid">
+<div>
+<strong>Trapezoid (US) / Trapezium (UK)</strong>
+<div class="diagram">
+<svg aria-label="Trapezoid" viewbox="0 0 240 160">
+<polygon fill="none" points="40,120 200,120 170,40 70,40" stroke="#111" stroke-width="2"></polygon>
+<line stroke="#64748b" stroke-dasharray="5 4" stroke-width="1" x1="70" x2="70" y1="40" y2="120"></line>
+<path d="M70,120 h10 v-10" fill="none" stroke="#111" stroke-width="1"></path>
+<text font-size="12" x="110" y="135">b2</text>
+<text font-size="12" x="115" y="30">b1</text>
+<text font-size="12" x="75" y="80">h</text>
+</svg>
+<svg aria-label="Trapezoid, shaded" viewbox="0 0 240 160">
+<polygon fill="#fef9c3" points="40,120 200,120 170,40 70,40" stroke="#111" stroke-width="2"></polygon>
+</svg>
+</div>
+<div class="vars"><span>bases <strong>b1, b2</strong></span><span>height <strong>h</strong></span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Perimeter:</strong>
+<span class="small">Sum of all side lengths.</span>
+</li>
+<li><strong>Area:</strong>
+<math display="block">
+<mrow>
+<mi>A</mi><mo>=</mo>
+<mfrac>
+<mrow><mi>b</mi><mn>1</mn><mo>+</mo><mi>b</mi><mn>2</mn></mrow>
+<mn>2</mn>
+</mfrac>
+<mi>h</mi>
+</mrow>
+</math>
+</li>
+<li><strong>Median length:</strong>
+<math display="block"><mrow><mi>m</mi><mo>=</mo><mfrac><mrow><mi>b</mi><mn>1</mn><mo>+</mo><mi>b</mi><mn>2</mn></mrow><mn>2</mn></mfrac></mrow></math>
+</li>
+</ul>
+</div>
+</section>
+<!-- Circle -->
+<section class="shape" id="circle">
+<div>
+<strong>Circle</strong>
+<div class="diagram">
+<svg aria-label="Circle" viewbox="0 0 200 160">
+<circle cx="100" cy="80" fill="none" r="55" stroke="#111" stroke-width="2"></circle>
+<line stroke="#64748b" stroke-dasharray="5 4" x1="100" x2="155" y1="80" y2="80"></line>
+<circle cx="100" cy="80" fill="#111" r="3"></circle>
+<text font-size="12" x="128" y="72">r</text>
+</svg>
+<svg aria-label="Circle, shaded" viewbox="0 0 200 160">
+<circle cx="100" cy="80" fill="#bae6fd" r="55" stroke="#111" stroke-width="2"></circle>
+</svg>
+</div>
+<div class="vars"><span>radius <strong>r</strong></span><span>diameter <strong>d=2r</strong></span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Circumference:</strong>
+<math display="block"><mrow><mi>C</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>r</mi><mo>=</mo><mi>π</mi><mi>d</mi></mrow></math>
+</li>
+<li><strong>Area:</strong>
+<math display="block"><mrow><mi>A</mi><mo>=</mo><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow></math>
+</li>
+<li><strong>Sector (angle <em>θ</em> in radians):</strong>
+<div class="small">Arc length <math><mrow><mi>L</mi><mo>=</mo><mi>θ</mi><mi>r</mi></mrow></math>, Area <math><mrow><mi>A</mi><mo>=</mo><mfrac><mi>θ</mi><mn>2</mn></mfrac><msup><mi>r</mi><mn>2</mn></msup></mrow></math></div>
+</li>
+</ul>
+</div>
+</section>
+<!-- Ellipse -->
+<section class="shape" id="ellipse">
+<div>
+<strong>Ellipse</strong>
+<div class="diagram">
+<svg aria-label="Ellipse" viewbox="0 0 220 160">
+<ellipse cx="110" cy="85" fill="none" rx="80" ry="45" stroke="#111" stroke-width="2"></ellipse>
+<line stroke="#64748b" stroke-dasharray="5 4" x1="110" x2="190" y1="85" y2="85"></line>
+<line stroke="#64748b" stroke-dasharray="5 4" x1="110" x2="110" y1="85" y2="40"></line>
+<text font-size="12" x="150" y="78">a</text>
+<text font-size="12" x="116" y="58">b</text>
+</svg>
+<svg aria-label="Ellipse, shaded" viewbox="0 0 220 160">
+<ellipse cx="110" cy="85" fill="#fde68a" rx="80" ry="45" stroke="#111" stroke-width="2"></ellipse>
+</svg>
+</div>
+<div class="vars"><span>semi‑major <strong>a</strong></span><span>semi‑minor <strong>b</strong></span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Area:</strong>
+<math display="block"><mrow><mi>A</mi><mo>=</mo><mi>π</mi><mi>a</mi><mi>b</mi></mrow></math>
+</li>
+<li><strong>Circumference (Ramanujan approx.):</strong>
+<math display="block">
+<mrow>
+<mi>C</mi><mo>≈</mo>
+<mi>π</mi>
+<mo>[</mo>
+<mn>3</mn><mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>)</mo>
+<mo>-</mo>
+<msqrt>
+<mrow>
+<mo>(</mo><mn>3</mn><mi>a</mi><mo>+</mo><mi>b</mi><mo>)</mo>
+<mo>(</mo><mi>a</mi><mo>+</mo><mn>3</mn><mi>b</mi><mo>)</mo>
+</mrow>
+</msqrt>
+<mo>]</mo>
+</mrow>
+</math>
+</li>
+</ul>
+</div>
+</section>
+<!-- Regular n-gon -->
+<section class="shape" id="regular-ngon">
+<div>
+<strong>Regular <em>n</em>-gon</strong>
+<div class="diagram">
+<svg aria-label="Regular n-gon" viewbox="0 0 220 160">
+<!-- draw a hexagon as example -->
+<polygon fill="none" points="110,35 165,65 165,125 110,155 55,125 55,65" stroke="#111" stroke-width="2"></polygon>
+<line stroke="#64748b" stroke-dasharray="5 4" x1="110" x2="165" y1="95" y2="95"></line>
+<text font-size="12" x="133" y="90">apothem a</text>
+</svg>
+<svg aria-label="Regular n-gon, shaded" viewbox="0 0 220 160">
+<polygon fill="#dcfce7" points="110,35 165,65 165,125 110,155 55,125 55,65" stroke="#111" stroke-width="2"></polygon>
+</svg>
+</div>
+<div class="vars"><span>side length <strong>s</strong></span><span>apothem <strong>a</strong></span><span>n sides</span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Perimeter:</strong>
+<math display="block"><mrow><mi>P</mi><mo>=</mo><mi>n</mi><mi>s</mi></mrow></math>
+</li>
+<li><strong>Area (two forms):</strong>
+<math display="block"><mrow><mi>A</mi><mo>=</mo><mfrac><mrow><mi>P</mi><mi>a</mi></mrow><mn>2</mn></mfrac><mo>=</mo><mfrac><mrow><mi>n</mi><msup><mi>s</mi><mn>2</mn></msup></mrow><mrow><mn>4</mn><mi>tan</mi><mo>(</mo><mfrac><mi>π</mi><mi>n</mi></mfrac><mo>)</mo></mrow></mfrac></mrow></math>
+</li>
+</ul>
+</div>
+</section>
+<h2 class="page-break">3D Shapes</h2>
+<!-- Cube -->
+<section class="shape" id="cube">
+<div>
+<strong>Cube</strong>
+<div class="diagram">
+<!-- isometric cube line -->
+<svg aria-label="Cube, isometric line" viewbox="0 0 220 180">
+<!-- back top edge -->
+<polygon fill="none" points="70,30 150,30 190,60 110,60" stroke="#111" stroke-width="2"></polygon>
+<!-- front faces -->
+<polygon fill="none" points="70,30 110,60 110,140 70,110" stroke="#111" stroke-width="2"></polygon>
+<polygon fill="none" points="110,60 190,60 190,140 110,140" stroke="#111" stroke-width="2"></polygon>
+<!-- hidden base edge -->
+<line stroke="#64748b" stroke-dasharray="5 4" x1="70" x2="150" y1="110" y2="110"></line>
+<text font-size="12" x="120" y="155">edge a</text>
+</svg>
+<!-- isometric cube shaded -->
+<svg aria-label="Cube, isometric shaded" viewbox="0 0 220 180">
+<polygon fill="#dbeafe" points="70,30 150,30 190,60 110,60" stroke="#111" stroke-width="1.5"></polygon>
+<polygon fill="#bfdbfe" points="70,30 110,60 110,140 70,110" stroke="#111" stroke-width="1.5"></polygon>
+<polygon fill="#93c5fd" points="110,60 190,60 190,140 110,140" stroke="#111" stroke-width="1.5"></polygon>
+</svg>
+</div>
+<div class="vars"><span>edge <strong>a</strong></span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Surface area:</strong>
+<math display="block"><mrow><mi>SA</mi><mo>=</mo><mn>6</mn><msup><mi>a</mi><mn>2</mn></msup></mrow></math>
+</li>
+<li><strong>Volume:</strong>
+<math display="block"><mrow><mi>V</mi><mo>=</mo><msup><mi>a</mi><mn>3</mn></msup></mrow></math>
+</li>
+<li><strong>Space diagonal:</strong>
+<math display="block"><mrow><mi>d</mi><mo>=</mo><mi>a</mi><msqrt><mn>3</mn></msqrt></mrow></math>
+</li>
+</ul>
+</div>
+</section>
+<!-- Rectangular Prism -->
+<section class="shape" id="cuboid">
+<div>
+<strong>Rectangular Prism (Cuboid)</strong>
+<div class="diagram">
+<svg aria-label="Cuboid, isometric" viewbox="0 0 240 180">
+<!-- top -->
+<polygon fill="#e2e8f0" points="70,30 170,30 200,50 100,50" stroke="#111" stroke-width="1.5"></polygon>
+<!-- left -->
+<polygon fill="#cbd5e1" points="70,30 100,50 100,140 70,120" stroke="#111" stroke-width="1.5"></polygon>
+<!-- right/front -->
+<polygon fill="#94a3b8" points="100,50 200,50 200,140 100,140" stroke="#111" stroke-width="1.5"></polygon>
+<text font-size="12" x="140" y="150">l</text>
+<text font-size="12" x="58" y="85">h</text>
+<text font-size="12" x="120" y="42">w</text>
+</svg>
+<svg aria-label="Cuboid, wireframe" viewbox="0 0 240 180">
+<polygon fill="none" points="70,30 170,30 200,50 100,50" stroke="#111" stroke-width="2"></polygon>
+<polygon fill="none" points="70,30 100,50 100,140 70,120" stroke="#111" stroke-width="2"></polygon>
+<polygon fill="none" points="100,50 200,50 200,140 100,140" stroke="#111" stroke-width="2"></polygon>
+<line stroke="#64748b" stroke-dasharray="5 4" x1="70" x2="170" y1="120" y2="120"></line>
+</svg>
+</div>
+<div class="vars"><span>length <strong>l</strong></span><span>width <strong>w</strong></span><span>height <strong>h</strong></span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Surface area:</strong>
+<math display="block"><mrow><mi>SA</mi><mo>=</mo><mn>2</mn><mo>(</mo><mi>l</mi><mi>w</mi><mo>+</mo><mi>l</mi><mi>h</mi><mo>+</mo><mi>w</mi><mi>h</mi><mo>)</mo></mrow></math>
+</li>
+<li><strong>Volume:</strong>
+<math display="block"><mrow><mi>V</mi><mo>=</mo><mi>l</mi><mi>w</mi><mi>h</mi></mrow></math>
+</li>
+<li><strong>Space diagonal:</strong>
+<math display="block"><mrow><mi>d</mi><mo>=</mo><msqrt><mrow><msup><mi>l</mi><mn>2</mn></msup><mo>+</mo><msup><mi>w</mi><mn>2</mn></msup><mo>+</mo><msup><mi>h</mi><mn>2</mn></msup></mrow></msqrt></mrow></math>
+</li>
+</ul>
+</div>
+</section>
+<!-- Right Prism (general) -->
+<section class="shape" id="right-prism">
+<div>
+<strong>Right Prism (General base)</strong>
+<div class="diagram">
+<svg aria-label="Right prism" viewbox="0 0 260 180">
+<!-- back base (dashed) -->
+<polygon fill="none" points="70,50 120,30 170,50 150,80 90,80" stroke="#64748b" stroke-dasharray="5 4" stroke-width="1.5"></polygon>
+<!-- front base -->
+<polygon fill="#bbf7d0" points="70,110 120,90 170,110 150,140 90,140" stroke="#111" stroke-width="1.5"></polygon>
+<!-- vertical edges -->
+<line stroke="#111" stroke-width="1.5" x1="70" x2="70" y1="50" y2="110"></line>
+<line stroke="#111" stroke-width="1.5" x1="120" x2="120" y1="30" y2="90"></line>
+<line stroke="#111" stroke-width="1.5" x1="170" x2="170" y1="50" y2="110"></line>
+<line stroke="#111" stroke-width="1.5" x1="150" x2="150" y1="80" y2="140"></line>
+<line stroke="#111" stroke-width="1.5" x1="90" x2="90" y1="80" y2="140"></line>
+<text font-size="12" x="178" y="82">h</text>
+<text font-size="12" x="110" y="152">P<tspan style="baseline-shift:sub;font-size:70%">base</tspan></text>
+</svg>
+<svg aria-label="Right prism, wireframe" viewbox="0 0 260 180">
+<polygon fill="none" points="70,50 120,30 170,50 150,80 90,80" stroke="#64748b" stroke-dasharray="5 4" stroke-width="1.5"></polygon>
+<polygon fill="none" points="70,110 120,90 170,110 150,140 90,140" stroke="#111" stroke-width="2"></polygon>
+</svg>
+</div>
+<div class="vars"><span>base area <strong>A<sub>base</sub></strong></span><span>base perimeter <strong>P<sub>base</sub></strong></span><span>height <strong>h</strong></span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Lateral area:</strong>
+<math display="block"><mrow><mi>LA</mi><mo>=</mo><msub><mi>P</mi><mtext>base</mtext></msub><mi>h</mi></mrow></math>
+</li>
+<li><strong>Surface area:</strong>
+<math display="block"><mrow><mi>SA</mi><mo>=</mo><mi>LA</mi><mo>+</mo><mn>2</mn><msub><mi>A</mi><mtext>base</mtext></msub></mrow></math>
+</li>
+<li><strong>Volume:</strong>
+<math display="block"><mrow><mi>V</mi><mo>=</mo><msub><mi>A</mi><mtext>base</mtext></msub><mi>h</mi></mrow></math>
+</li>
+</ul>
+</div>
+</section>
+<!-- Cylinder -->
+<section class="shape" id="cylinder">
+<div>
+<strong>Right Circular Cylinder</strong>
+<div class="diagram">
+<svg aria-label="Cylinder" viewbox="0 0 240 180">
+<ellipse cx="120" cy="40" fill="#f1f5f9" rx="60" ry="18" stroke="#111" stroke-width="1.5"></ellipse>
+<ellipse cx="120" cy="140" fill="none" rx="60" ry="18" stroke="#64748b" stroke-dasharray="5 4" stroke-width="1.5"></ellipse>
+<line stroke="#111" stroke-width="1.5" x1="60" x2="60" y1="40" y2="140"></line>
+<line stroke="#111" stroke-width="1.5" x1="180" x2="180" y1="40" y2="140"></line>
+<text font-size="12" x="188" y="92">h</text>
+<text font-size="12" x="152" y="35">r</text>
+</svg>
+<svg aria-label="Cylinder, shaded" viewbox="0 0 240 180">
+<rect fill="#cbd5e1" height="100" stroke="#111" stroke-width="1.5" width="120" x="60" y="40"></rect>
+<ellipse cx="120" cy="40" fill="#e2e8f0" rx="60" ry="18" stroke="#111" stroke-width="1.5"></ellipse>
+<ellipse cx="120" cy="140" fill="#94a3b8" rx="60" ry="18" stroke="#111" stroke-width="1.5"></ellipse>
+</svg>
+</div>
+<div class="vars"><span>radius <strong>r</strong></span><span>height <strong>h</strong></span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Lateral area:</strong>
+<math display="block"><mrow><mi>LA</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>r</mi><mi>h</mi></mrow></math>
+</li>
+<li><strong>Surface area:</strong>
+<math display="block"><mrow><mi>SA</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>r</mi><mi>h</mi><mo>+</mo><mn>2</mn><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow></math>
+</li>
+<li><strong>Volume:</strong>
+<math display="block"><mrow><mi>V</mi><mo>=</mo><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mi>h</mi></mrow></math>
+</li>
+</ul>
+</div>
+</section>
+<!-- Cone -->
+<section class="shape" id="cone">
+<div>
+<strong>Right Circular Cone</strong>
+<div class="diagram">
+<svg aria-label="Cone" viewbox="0 0 240 180">
+<ellipse cx="120" cy="140" fill="none" rx="60" ry="18" stroke="#64748b" stroke-dasharray="5 4" stroke-width="1.5"></ellipse>
+<line stroke="#111" stroke-width="1.5" x1="120" x2="60" y1="40" y2="140"></line>
+<line stroke="#111" stroke-width="1.5" x1="120" x2="180" y1="40" y2="140"></line>
+<line stroke="#64748b" stroke-dasharray="5 4" stroke-width="1.5" x1="120" x2="120" y1="40" y2="140"></line>
+<text font-size="12" x="188" y="96">r</text>
+<text font-size="12" x="124" y="92">h</text>
+</svg>
+<svg aria-label="Cone, shaded" viewbox="0 0 240 180">
+<polygon fill="#fde68a" points="120,40 60,140 180,140" stroke="#111" stroke-width="1.5"></polygon>
+<ellipse cx="120" cy="140" fill="none" rx="60" ry="18" stroke="#111" stroke-width="1.5"></ellipse>
+</svg>
+</div>
+<div class="vars"><span>radius <strong>r</strong></span><span>height <strong>h</strong></span><span>slant <strong>s</strong></span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Slant height:</strong>
+<math display="block"><mrow><mi>s</mi><mo>=</mo><msqrt><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>+</mo><msup><mi>h</mi><mn>2</mn></msup></mrow></msqrt></mrow></math>
+</li>
+<li><strong>Surface area:</strong>
+<math display="block"><mrow><mi>SA</mi><mo>=</mo><mi>π</mi><mi>r</mi><mi>s</mi><mo>+</mo><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow></math>
+</li>
+<li><strong>Volume:</strong>
+<math display="block"><mrow><mi>V</mi><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mi>h</mi></mrow></math>
+</li>
+</ul>
+</div>
+</section>
+<!-- Square Pyramid -->
+<section class="shape" id="square-pyramid">
+<div>
+<strong>Right Square Pyramid</strong>
+<div class="diagram">
+<svg aria-label="Square pyramid" viewbox="0 0 240 190">
+<!-- base (seen) -->
+<polygon fill="none" points="70,140 170,140 190,120 90,120" stroke="#111" stroke-width="1.5"></polygon>
+<!-- hidden back edge -->
+<line stroke="#64748b" stroke-dasharray="5 4" stroke-width="1.5" x1="170" x2="190" y1="140" y2="120"></line>
+<!-- apex edges -->
+<line stroke="#111" stroke-width="1.5" x1="130" x2="70" y1="60" y2="140"></line>
+<line stroke="#111" stroke-width="1.5" x1="130" x2="170" y1="60" y2="140"></line>
+<line stroke="#111" stroke-width="1.5" x1="130" x2="90" y1="60" y2="120"></line>
+<line stroke="#64748b" stroke-dasharray="5 4" stroke-width="1.5" x1="130" x2="190" y1="60" y2="120"></line>
+<!-- height -->
+<line stroke="#64748b" stroke-dasharray="5 4" stroke-width="1.5" x1="130" x2="130" y1="60" y2="130"></line>
+<text font-size="12" x="132" y="98">h</text>
+<text font-size="12" x="125" y="150">b</text>
+</svg>
+<svg aria-label="Square pyramid, shaded" viewbox="0 0 240 190"><polygon fill="#e2e8f0" points="70,140 170,140 190,120 90,120" stroke="#111" stroke-width="1.5"></polygon><polygon fill="#fecaca" points="130,60 70,140 90,120" stroke="#111" stroke-width="1.5"></polygon><polygon fill="#fca5a5" points="130,60 170,140 190,120" stroke="#111" stroke-width="1.5"></polygon><polygon fill="#fda4af" points="130,60 90,120 170,140" stroke="#111" stroke-width="1.5"></polygon><line stroke="#64748b" stroke-dasharray="5 4" stroke-width="1.5" x1="130" x2="190" y1="60" y2="120"></line></svg>
+</div>
+<div class="vars"><span>base side <strong>b</strong></span><span>height <strong>h</strong></span><span>slant (face) <strong>s</strong></span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Slant height (face center):</strong>
+<math display="block"><mrow><mi>s</mi><mo>=</mo><msqrt><mrow><msup><mfrac><mi>b</mi><mn>2</mn></mfrac><mn>2</mn></msup><mo>+</mo><msup><mi>h</mi><mn>2</mn></msup></mrow></msqrt></mrow></math>
+</li>
+<li><strong>Surface area:</strong>
+<math display="block"><mrow><mi>SA</mi><mo>=</mo><msup><mi>b</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>b</mi><mi>s</mi></mrow></math>
+</li>
+<li><strong>Volume:</strong>
+<math display="block"><mrow><mi>V</mi><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><msup><mi>b</mi><mn>2</mn></msup><mi>h</mi></mrow></math>
+</li>
+</ul>
+</div>
+</section>
+<!-- Sphere -->
+<section class="shape" id="sphere">
+<div>
+<strong>Sphere</strong>
+<div class="diagram">
+<svg aria-label="Sphere" viewbox="0 0 220 180">
+<defs>
+<radialgradient cx="40%" cy="35%" id="gS" r="60%">
+<stop offset="0%" stop-color="#ffffff"></stop>
+<stop offset="75%" stop-color="#93c5fd"></stop>
+<stop offset="100%" stop-color="#60a5fa"></stop>
+</radialgradient>
+</defs>
+<circle cx="110" cy="90" fill="url(#gS)" r="65" stroke="#111" stroke-width="1.5"></circle>
+<ellipse cx="110" cy="90" fill="none" rx="65" ry="18" stroke="#64748b" stroke-dasharray="5 4" stroke-width="1.5"></ellipse>
+<line stroke="#64748b" stroke-dasharray="5 4" stroke-width="1.5" x1="110" x2="175" y1="90" y2="90"></line>
+<text font-size="12" x="145" y="82">r</text>
+</svg>
+<svg aria-label="Sphere, wireframe" viewbox="0 0 220 180">
+<circle cx="110" cy="90" fill="none" r="65" stroke="#111" stroke-width="2"></circle>
+<ellipse cx="110" cy="90" fill="none" rx="65" ry="18" stroke="#64748b" stroke-dasharray="5 4" stroke-width="1.5"></ellipse>
+</svg>
+</div>
+<div class="vars"><span>radius <strong>r</strong></span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Surface area:</strong>
+<math display="block"><mrow><mi>SA</mi><mo>=</mo><mn>4</mn><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow></math>
+</li>
+<li><strong>Volume:</strong>
+<math display="block"><mrow><mi>V</mi><mo>=</mo><mfrac><mn>4</mn><mn>3</mn></mfrac><mi>π</mi><msup><mi>r</mi><mn>3</mn></msup></mrow></math>
+</li>
+</ul>
+</div>
+</section>
+<!-- Hemisphere -->
+<section class="shape" id="hemisphere">
+<div>
+<strong>Hemisphere</strong>
+<div class="diagram">
+<svg aria-label="Hemisphere" viewbox="0 0 240 180">
+<path d="M40,120 A80,80 0 0 1 200,120" fill="#e0f2fe" stroke="#111" stroke-width="1.5"></path>
+<line stroke="#111" stroke-width="1.5" x1="40" x2="200" y1="120" y2="120"></line>
+
+<line stroke="#111" stroke-width="1.5" x1="120" x2="200" y1="120" y2="120"></line><circle cx="120" cy="120" fill="#111" r="2.2"></circle><text font-size="12" x="162" y="116">r</text></svg>
+<svg aria-label="Hemisphere, wireframe" viewbox="0 0 240 180">
+<path d="M40,120 A80,80 0 0 1 200,120" fill="none" stroke="#111" stroke-width="2"></path>
+<ellipse cx="120" cy="120" fill="none" rx="80" ry="10" stroke="#64748b" stroke-dasharray="5 4" stroke-width="1.5"></ellipse>
+</svg>
+</div>
+<div class="vars"><span>radius <strong>r</strong></span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Curved surface area (no base):</strong>
+<math display="block"><mrow><mi>CSA</mi><mo>=</mo><mn>2</mn><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow></math>
+</li>
+<li><strong>Total surface area (with base):</strong>
+<math display="block"><mrow><mi>SA</mi><mo>=</mo><mn>3</mn><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow></math>
+</li>
+<li><strong>Volume:</strong>
+<math display="block"><mrow><mi>V</mi><mo>=</mo><mfrac><mn>2</mn><mn>3</mn></mfrac><mi>π</mi><msup><mi>r</mi><mn>3</mn></msup></mrow></math>
+</li>
+</ul>
+</div>
+</section>
+<!-- Cone Frustum -->
+<section class="shape" id="cone-frustum">
+<div>
+<strong>Frustum of a Right Circular Cone</strong>
+<div class="diagram">
+<svg aria-label="Cone frustum" viewbox="0 0 260 190">
+<ellipse cx="130" cy="60" fill="none" rx="40" ry="12" stroke="#111" stroke-width="1.5"></ellipse>
+<ellipse cx="130" cy="150" fill="none" rx="70" ry="16" stroke="#64748b" stroke-dasharray="5 4" stroke-width="1.5"></ellipse>
+<line stroke="#111" stroke-width="1.5" x1="90" x2="60" y1="60" y2="150"></line>
+<line stroke="#111" stroke-width="1.5" x1="170" x2="200" y1="60" y2="150"></line>
+<text font-size="12" x="173" y="58">r<tspan style="baseline-shift:sub;font-size:70%">1</tspan></text>
+<text font-size="12" x="205" y="148">r<tspan style="baseline-shift:sub;font-size:70%">2</tspan></text>
+<text font-size="12" x="212" y="105">h</text>
+</svg>
+<svg aria-label="Cone frustum, shaded" viewbox="0 0 260 190">
+<polygon fill="#fde68a" points="90,60 170,60 200,150 60,150" stroke="#111" stroke-width="1.5"></polygon>
+<ellipse cx="130" cy="60" fill="none" rx="40" ry="12" stroke="#111" stroke-width="1.5"></ellipse>
+<ellipse cx="130" cy="150" fill="none" rx="70" ry="16" stroke="#111" stroke-width="1.5"></ellipse>
+</svg>
+</div>
+<div class="vars"><span>top radius <strong>r₁</strong></span><span>bottom radius <strong>r₂</strong></span><span>height <strong>h</strong></span><span>slant <strong>s</strong></span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Slant height:</strong>
+<math display="block"><mrow><mi>s</mi><mo>=</mo><msqrt><mrow><msup><mi>h</mi><mn>2</mn></msup><mo>+</mo><msup><mrow><mo>(</mo><mi>r</mi><mo>_</mo><mn>2</mn><mo>-</mo><mi>r</mi><mo>_</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></math>
+</li>
+<li><strong>Lateral area:</strong>
+<math display="block"><mrow><mi>LA</mi><mo>=</mo><mi>π</mi><mo>(</mo><msub><mi>r</mi><mn>1</mn></msub><mo>+</mo><msub><mi>r</mi><mn>2</mn></msub><mo>)</mo><mi>s</mi></mrow></math>
+</li>
+<li><strong>Surface area:</strong>
+<math display="block"><mrow><mi>SA</mi><mo>=</mo><mi>LA</mi><mo>+</mo><mi>π</mi><msup><msub><mi>r</mi><mn>1</mn></msub><mn>2</mn></msup><mo>+</mo><mi>π</mi><msup><msub><mi>r</mi><mn>2</mn></msub><mn>2</mn></msup></mrow></math>
+</li>
+<li><strong>Volume:</strong>
+<math display="block"><mrow><mi>V</mi><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mi>π</mi><mi>h</mi><mo>(</mo><msup><msub><mi>r</mi><mn>1</mn></msub><mn>2</mn></msup><mo>+</mo><msub><mi>r</mi><mn>1</mn></msub><msub><mi>r</mi><mn>2</mn></msub><mo>+</mo><msup><msub><mi>r</mi><mn>2</mn></msub><mn>2</mn></msup><mo>)</mo></mrow></math>
+</li>
+</ul>
+</div>
+</section>
+<!-- Pyramid Frustum (regular) -->
+<section class="shape" id="pyramid-frustum">
+<div>
+<strong>Frustum of a Right Regular Pyramid</strong>
+<div class="diagram">
+<svg aria-label="Pyramid frustum" viewbox="0 0 260 190">
+<!-- top smaller square -->
+<polygon fill="none" points="110,70 150,70 170,85 130,85" stroke="#111" stroke-width="1.5"></polygon>
+<!-- bottom larger -->
+<polygon fill="none" points="80,150 180,150 210,130 110,130" stroke="#111" stroke-width="1.5"></polygon>
+<!-- edges -->
+<line stroke="#111" stroke-width="1.5" x1="110" x2="80" y1="70" y2="150"></line>
+<line stroke="#111" stroke-width="1.5" x1="150" x2="180" y1="70" y2="150"></line>
+<line stroke="#111" stroke-width="1.5" x1="170" x2="210" y1="85" y2="130"></line>
+<line stroke="#111" stroke-width="1.5" x1="130" x2="110" y1="85" y2="130"></line>
+<text font-size="12" x="188" y="142">b<tspan style="baseline-shift:sub;font-size:70%">2</tspan></text>
+<text font-size="12" x="145" y="68">b<tspan style="baseline-shift:sub;font-size:70%">1</tspan></text>
+<text font-size="12" x="215" y="108">h</text>
+</svg>
+<svg aria-label="Pyramid frustum, shaded" viewbox="0 0 260 190">
+<polygon fill="#fde68a" points="110,70 150,70 170,85 130,85" stroke="#111" stroke-width="1.5"></polygon>
+<polygon fill="#fee2e2" points="80,150 180,150 210,130 110,130" stroke="#111" stroke-width="1.5"></polygon>
+<polygon fill="#fecaca" opacity=".9" points="110,70 150,70 180,150 80,150" stroke="#111" stroke-width="1.5"></polygon>
+</svg>
+</div>
+<div class="vars"><span>top base area <strong>A₁</strong>, perimeter <strong>P₁</strong></span><span>bottom base area <strong>A₂</strong>, perimeter <strong>P₂</strong></span><span>height <strong>h</strong></span><span>slant <strong>s</strong></span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Lateral area (regular):</strong>
+<math display="block"><mrow><mi>LA</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>(</mo><msub><mi>P</mi><mn>1</mn></msub><mo>+</mo><msub><mi>P</mi><mn>2</mn></msub><mo>)</mo><mi>s</mi></mrow></math>
+</li>
+<li><strong>Surface area:</strong>
+<math display="block"><mrow><mi>SA</mi><mo>=</mo><mi>LA</mi><mo>+</mo><msub><mi>A</mi><mn>1</mn></msub><mo>+</mo><msub><mi>A</mi><mn>2</mn></msub></mrow></math>
+</li>
+<li><strong>Volume (general):</strong>
+<math display="block"><mrow><mi>V</mi><mo>=</mo><mfrac><mn>1</mn><mn>3</mn></mfrac><mi>h</mi><mo>(</mo><msub><mi>A</mi><mn>1</mn></msub><mo>+</mo><msub><mi>A</mi><mn>2</mn></msub><mo>+</mo><msqrt><mrow><msub><mi>A</mi><mn>1</mn></msub><msub><mi>A</mi><mn>2</mn></msub></mrow></msqrt><mo>)</mo></mrow></math>
+</li>
+</ul>
+</div>
+</section>
+<!-- Hemisphere/Torus/Ellipsoid quick formulas -->
+<section class="shape" id="torus-ellipsoid">
+<div>
+<strong>Torus &amp; Ellipsoid (quick refs)</strong>
+<div class="diagram">
+<svg aria-label="Torus" viewbox="0 0 240 180">
+<defs>
+<radialgradient cx="50%" cy="50%" id="gt" r="50%">
+<stop offset="0%" stop-color="#fff"></stop>
+<stop offset="100%" stop-color="#93c5fd"></stop>
+</radialgradient>
+</defs>
+<!-- torus (simple icon) -->
+<ellipse cx="120" cy="90" fill="url(#gt)" rx="80" ry="40" stroke="#111" stroke-width="1.5"></ellipse>
+<ellipse cx="120" cy="90" fill="#fff" rx="40" ry="20" stroke="#111" stroke-width="1.5"></ellipse>
+<text font-size="12" x="200" y="92">R</text>
+<text font-size="12" x="160" y="70">r</text>
+</svg>
+<svg aria-label="Ellipsoid" viewbox="0 0 240 180">
+<ellipse cx="120" cy="90" fill="#dcfce7" rx="80" ry="50" stroke="#111" stroke-width="1.5"></ellipse>
+<line stroke="#64748b" stroke-dasharray="5 4" x1="40" x2="200" y1="90" y2="90"></line>
+<text font-size="12" x="201" y="88">2a</text>
+<text font-size="12" x="122" y="38">2b</text>
+<text font-size="12" x="122" y="150">2c (depth)</text>
+</svg>
+</div>
+<div class="vars"><span>Torus: major <strong>R</strong>, minor <strong>r</strong></span><span>Ellipsoid semiaxes <strong>a,b,c</strong></span></div>
+</div>
+<div>
+<ul class="formulas">
+<li><strong>Torus:</strong>
+<div class="small">Surface area and volume (donut with tube radius <code class="var">r</code> around circle radius <code class="var">R</code>)</div>
+<math display="block"><mrow><mi>SA</mi><mo>=</mo><mn>4</mn><msup><mi>π</mi><mn>2</mn></msup><mi>R</mi><mi>r</mi></mrow></math>
+<math display="block"><mrow><mi>V</mi><mo>=</mo><mn>2</mn><msup><mi>π</mi><mn>2</mn></msup><mi>R</mi><msup><mi>r</mi><mn>2</mn></msup></mrow></math>
+</li>
+<li><strong>Ellipsoid:</strong>
+<math display="block"><mrow><mi>V</mi><mo>=</mo><mfrac><mn>4</mn><mn>3</mn></mfrac><mi>π</mi><mi>a</mi><mi>b</mi><mi>c</mi></mrow></math>
+<div class="small">Surface area requires elliptic integrals; a common approximation (Knud Thomsen) uses exponent <em>p</em> ≈ 1.6075:</div>
+<math display="block">
+<mrow>
+<mi>SA</mi><mo>≈</mo>
+<mn>4</mn><mi>π</mi>
+<msup>
+<mrow>
+<mfrac>
+<mrow>
+<msup><mi>a</mi><mi>p</mi></msup>
+<mo>+</mo><msup><mi>b</mi><mi>p</mi></msup>
+<mo>+</mo><msup><mi>c</mi><mi>p</mi></msup>
+</mrow>
+<mn>3</mn>
+</mfrac>
+</mrow>
+<mrow><mtext>1</mtext><mo>/</mo><mi>p</mi></mrow>
+</msup>
+</mrow>
+</math>
+</li>
+</ul>
+</div>
+</section>
+<footer class="small" style="margin-top:24px;">
+    Tip: Use the <strong>Print / Export to PDF</strong> button for a clean A4 PDF. This document is self‑contained (no external libraries) and uses MathML for crisp, LaTeX‑style formulas.
+  </footer>
+</main>
+</body>
+</html>
