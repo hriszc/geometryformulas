@@ -28,6 +28,8 @@
   header{position:sticky; top:0; background:linear-gradient(#fff, #fff9); backdrop-filter:saturate(180%) blur(8px); border-bottom:1px solid var(--line); z-index:10;}
   header .bar{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 18px; max-width:1024px; margin:0 auto;}
   h1{font-size:clamp(20px, 3vw, 28px); margin:0; letter-spacing:.2px;}
+  nav{display:flex; gap:12px;}
+  nav a{text-decoration:none; color:var(--accent); font-weight:600;}
   .btn{appearance:none; border:1px solid var(--accent); background:var(--accent); color:#fff; padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:600;}
   .btn.secondary{background:transparent; color:var(--accent);}
   .actions{display:flex; gap:8px; position:relative;}
@@ -64,6 +66,10 @@
 <header class="no-print">
 <div class="bar">
 <h1>Comprehensive Geometry Formulas — 2D &amp; 3D (Student Edition)</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="double-angle-formulas.html">Double Angle Formulas</a>
+</nav>
 <div class="actions">
 <button class="btn" onclick="window.print()">Print / Export to PDF</button>
 <button class="btn secondary" id="share-btn">Share</button>
