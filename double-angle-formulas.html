@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<title>Trigonometric Double Angle Formulas</title>
+<style>
+  :root{
+    --ink:#0f172a;          /* slate-900 */
+    --muted:#475569;        /* slate-600 */
+    --accent:#2563eb;       /* blue-600 */
+    --paper:#ffffff;
+    --card:#f8fafc;         /* slate-50 */
+    --line:#94a3b8;         /* slate-400 */
+  }
+  html,body{background:var(--paper); color:var(--ink); font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; line-height:1.55; margin:0; padding:0;}
+  header{position:sticky; top:0; background:linear-gradient(#fff, #fff9); backdrop-filter:saturate(180%) blur(8px); border-bottom:1px solid var(--line); z-index:10;}
+  header .bar{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 18px; max-width:1024px; margin:0 auto;}
+  h1{font-size:clamp(20px, 3vw, 28px); margin:0; letter-spacing:.2px;}
+  nav{display:flex; gap:12px;}
+  nav a{text-decoration:none; color:var(--accent); font-weight:600;}
+  .btn{appearance:none; border:1px solid var(--accent); background:var(--accent); color:#fff; padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:600;}
+  .btn.secondary{background:transparent; color:var(--accent);}
+  .actions{display:flex; gap:8px; position:relative;}
+  .share-menu{position:absolute; right:0; top:calc(100% + 4px); background:#fff; border:1px solid var(--line); border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.1); padding:8px; display:none;}
+  .share-menu a, .share-menu button{display:block; padding:6px 8px; text-decoration:none; color:var(--ink); background:none; border:none; width:100%; text-align:left; cursor:pointer;}
+  .share-menu.show{display:block;}
+  main{max-width:1024px; margin:0 auto; padding:18px;}
+  ul.formulas{margin:8px 0 0 18px;}
+    li{margin:4px 0;}
+    .small{font-size:12px; color:var(--muted);}
+  @page{ size:A4; margin:12mm; }
+  @media print{
+    header{display:none !important;}
+    a[href]:after{ content:""; }
+  }
+</style>
+</head>
+<body>
+<header class="no-print">
+<div class="bar">
+<h1>Trigonometric Double Angle Formulas</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="double-angle-formulas.html">Double Angle Formulas</a>
+</nav>
+<div class="actions">
+<button class="btn" onclick="window.print()">Print / Export to PDF</button>
+<button class="btn secondary" id="share-btn">Share</button>
+<div id="share-menu" class="share-menu no-print">
+<a id="share-twitter" target="_blank" rel="noopener">Share on Twitter</a>
+<a id="share-facebook" target="_blank" rel="noopener">Share on Facebook</a>
+<a id="share-linkedin" target="_blank" rel="noopener">Share on LinkedIn</a>
+<button id="copy-text">Copy Promo Text</button>
+</div>
+</div>
+</div>
+</header>
+<main>
+<h2>Double Angle Formulas</h2>
+<ul class="formulas">
+<li>
+<math display="block">
+<mrow>
+<mi>sin</mi><mo>(</mo><mn>2</mn><mi>x</mi><mo>)</mo>
+<mo>=</mo>
+<mn>2</mn><mi>sin</mi><mo>(</mo><mi>x</mi><mo>)</mo><mi>cos</mi><mo>(</mo><mi>x</mi><mo>)</mo>
+</mrow>
+</math>
+</li>
+<li>
+<math display="block">
+<mrow>
+<mi>cos</mi><mo>(</mo><mn>2</mn><mi>x</mi><mo>)</mo>
+<mo>=</mo>
+<msup><mrow><mi>cos</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mn>2</mn></msup>
+<mo>-</mo>
+<msup><mrow><mi>sin</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mn>2</mn></msup>
+<mo>=</mo>
+<mn>2</mn><msup><mrow><mi>cos</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mn>2</mn></msup>
+<mo>-</mo><mn>1</mn>
+<mo>=</mo>
+<mn>1</mn><mo>-</mo><mn>2</mn><msup><mrow><mi>sin</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mn>2</mn></msup>
+</mrow>
+</math>
+</li>
+<li>
+<math display="block">
+<mrow>
+<mi>tan</mi><mo>(</mo><mn>2</mn><mi>x</mi><mo>)</mo>
+<mo>=</mo>
+<mfrac>
+<mrow><mn>2</mn><mi>tan</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>
+<mrow><mn>1</mn><mo>-</mo><msup><mrow><mi>tan</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mn>2</mn></msup></mrow>
+</mfrac>
+</mrow>
+</math>
+</li>
+</ul>
+<footer class="small" style="margin-top:24px;">
+Tip: Use the <strong>Print / Export to PDF</strong> button for a clean A4 PDF. This document is self‑contained (no external libraries) and uses MathML for crisp, LaTeX‑style formulas.
+</footer>
+</main>
+<script>
+(function(){
+  const shareBtn=document.getElementById('share-btn');
+  const menu=document.getElementById('share-menu');
+  const promoText=document.title+"\n"+location.href;
+  shareBtn?.addEventListener('click',async()=>{
+    if(navigator.share){
+      try{await navigator.share({title:document.title,text:promoText,url:location.href});}
+      catch(e){}
+    }else{
+      menu.classList.toggle('show');
+    }
+  });
+  document.getElementById('share-twitter').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(promoText)+'&url='+encodeURIComponent(location.href);
+  document.getElementById('share-facebook').href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href)+'&quote='+encodeURIComponent(promoText);
+  document.getElementById('share-linkedin').href='https://www.linkedin.com/shareArticle?mini=true&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title)+'&summary='+encodeURIComponent(promoText);
+  document.getElementById('copy-text').addEventListener('click',()=>{
+    navigator.clipboard.writeText(promoText).then(()=>{
+      const b=document.getElementById('copy-text');
+      b.textContent='Copied!';
+      setTimeout(()=>b.textContent='Copy Promo Text',2000);
+    });
+  });
+  document.addEventListener('click',e=>{
+    if(!menu.contains(e.target)&&e.target!==shareBtn){
+      menu.classList.remove('show');
+    }
+  });
+})();
+</script>
+</body>
+</html>
