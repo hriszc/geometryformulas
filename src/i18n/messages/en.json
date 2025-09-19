@@ -1,0 +1,51 @@
+{
+  "common": {
+    "siteName": "Geometry Formulas Knowledge Base",
+    "tagline": "Printable geometry and math formula references for students and educators.",
+    "nav": {
+      "home": "Geometry Formulas",
+      "math": "Math Formulas",
+      "doubleAngle": "Double Angle Formulas",
+      "pdf": "Geometry PDF"
+    },
+    "actions": {
+      "print": "Print / Export to PDF",
+      "share": "Share",
+      "copy": "Copy Promo Text",
+      "copied": "Copied!"
+    },
+    "shareMessage": "Explore {title} — printable reference sheet:\n{url}"
+  },
+  "home": {
+    "heading": "Comprehensive Geometry Formulas — 2D & 3D (Student Edition)",
+    "metaTitle": "Comprehensive Geometry Formulas — Printable A4",
+    "metaDescription": "Printable geometry formulas covering perimeter, area, surface area and volume for essential 2D and 3D shapes.",
+    "noteTitle": "How to use",
+    "noteBody": "This sheet uses native MathML for crisp math rendering in modern browsers. Click \"Print / Export to PDF\" to save an A4 PDF for study. Variables are consistently named for clarity across shapes.",
+    "downloadsHeading": "Downloadable Formula Sheets",
+    "sections": {
+      "planarHeading": "2D Shapes",
+      "planarDescription": "Perimeter and area formulas for foundational polygons and curves.",
+      "solidHeading": "3D Solids",
+      "solidDescription": "Surface area and volume relationships for prisms, cylinders, cones and spheres."
+    }
+  },
+  "math": {
+    "heading": "Comprehensive Math Formulas (Student Edition)",
+    "metaTitle": "Comprehensive Math Formulas — Printable A4",
+    "metaDescription": "Printable arithmetic, algebra and geometry formulas for quick classroom reference.",
+    "noteBody": "This sheet uses native MathML for clean, LaTeX-style math rendering. Print or export to PDF to keep a handy study copy.",
+    "sections": {
+      "arithmetic": "Arithmetic",
+      "algebra": "Algebra",
+      "geometry": "Geometry"
+    }
+  },
+  "doubleAngle": {
+    "heading": "Double Angle Identities (Trigonometry Reference)",
+    "metaTitle": "Double Angle Trigonometric Identities — Printable A4",
+    "metaDescription": "Printable double angle identities for sine, cosine and tangent.",
+    "noteBody": "Use these MathML formulas for clear trigonometric study sheets. Print or export to PDF when you need an offline copy.",
+    "sectionHeading": "Core Identities"
+  }
+}
