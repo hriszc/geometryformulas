@@ -70,7 +70,7 @@ export default async function LocaleLayout({
           </Script>
           <Header />
           <main className="mx-auto w-full max-w-5xl px-4 py-8 lg:px-8">{children}</main>
-          <Footer />
+          <Footer siteName={t('siteName')} tagline={t('tagline')} />
         </NextIntlClientProvider>
       </body>
     </html>
