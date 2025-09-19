@@ -8,12 +8,8 @@ const twitterBase = 'https://twitter.com/intent/tweet';
 const facebookBase = 'https://www.facebook.com/sharer/sharer.php';
 const linkedinBase = 'https://www.linkedin.com/shareArticle';
 
-function buildShareText(t: ReturnType<typeof useTranslations>, title: string, url: string) {
-  return t('common.shareMessage', {title, url});
-}
-
 export default function Header() {
-  const t = useTranslations();
+  const t = useTranslations('common');
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -27,7 +23,7 @@ export default function Header() {
     const url = window.location.href;
     const title = document.title;
     setSharePayload({
-      text: buildShareText(t, title, url),
+      text: t('shareMessage', {title, url}),
       url
     });
     setMenuOpen(false);
@@ -46,10 +42,10 @@ export default function Header() {
 
   const navItems = useMemo(
     () => [
-      {href: '/', label: t('common.nav.home')},
-      {href: '/math-formulas', label: t('common.nav.math')},
-      {href: '/double-angle-formulas', label: t('common.nav.doubleAngle')},
-      {href: '/pdfs/geometric-formulas.pdf', label: t('common.nav.pdf'), external: true}
+      {href: '/', label: t('nav.home')},
+      {href: '/math-formulas', label: t('nav.math')},
+      {href: '/double-angle-formulas', label: t('nav.doubleAngle')},
+      {href: '/pdfs/geometric-formulas.pdf', label: t('nav.pdf'), external: true}
     ],
     [t]
   );
@@ -121,9 +117,9 @@ export default function Header() {
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between lg:px-8">
         <div>
           <p className="text-sm font-semibold uppercase tracking-wide text-accent">
-            {t('common.siteName')}
+            {t('siteName')}
           </p>
-          <h1 className="text-lg font-bold sm:text-xl">{t('common.tagline')}</h1>
+          <h1 className="text-lg font-bold sm:text-xl">{t('tagline')}</h1>
         </div>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-end">
           <nav aria-label="Primary" className="flex flex-wrap items-center gap-3 text-sm font-semibold">
@@ -163,19 +159,19 @@ export default function Header() {
               className="rounded-lg bg-accent px-3 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-accent/90"
               onClick={() => window.print()}
             >
-              {t('common.actions.print')}
+              {t('actions.print')}
             </button>
             <button
               type="button"
               className="rounded-lg border border-accent px-3 py-2 text-sm font-semibold text-accent transition hover:bg-accent/10"
               onClick={handleShare}
             >
-              {t('common.actions.share')}
+              {t('actions.share')}
             </button>
             {menuOpen && (
               <div className="absolute right-0 top-12 w-56 rounded-lg border border-line bg-white p-2 text-sm shadow-lg">
                 <p className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-muted">
-                  {t('common.actions.share')}
+                  {t('actions.share')}
                 </p>
                 <div className="flex flex-col">
                   {shareLinks.map((link) => (
@@ -194,7 +190,7 @@ export default function Header() {
                     className="mt-1 rounded-md px-2 py-1.5 text-left font-medium text-accent transition hover:bg-card"
                     onClick={handleCopy}
                   >
-                    {copied ? t('common.actions.copied') : t('common.actions.copy')}
+                    {copied ? t('actions.copied') : t('actions.copy')}
                   </button>
                 </div>
               </div>
