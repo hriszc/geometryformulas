@@ -1,0 +1,51 @@
+{
+  "common": {
+    "siteName": "几何公式知识库",
+    "tagline": "提供可打印的几何与数学公式，帮助全球学习者与教师。",
+    "nav": {
+      "home": "几何公式",
+      "math": "数学公式",
+      "doubleAngle": "二倍角公式",
+      "pdf": "几何 PDF"
+    },
+    "actions": {
+      "print": "打印 / 导出 PDF",
+      "share": "分享",
+      "copy": "复制推广文案",
+      "copied": "已复制！"
+    },
+    "shareMessage": "浏览 {title} —— 可打印的参考清单：\n{url}"
+  },
+  "home": {
+    "heading": "几何公式大全：二维与三维（学生版）",
+    "metaTitle": "几何公式大全 — 可打印 A4",
+    "metaDescription": "涵盖常见二维图形与三维立体的周长、面积、表面积与体积，适合打印的几何公式汇总。",
+    "noteTitle": "使用提示",
+    "noteBody": "此页使用原生 MathML 呈现公式，在现代浏览器中拥有清晰的排版。点击“打印 / 导出 PDF”即可保存 A4 学习手册。变量命名统一，方便快速查阅。",
+    "downloadsHeading": "可下载的公式手册",
+    "sections": {
+      "planarHeading": "二维图形",
+      "planarDescription": "收录常见多边形与曲线的周长、面积公式。",
+      "solidHeading": "三维立体",
+      "solidDescription": "囊括棱柱、圆柱、圆锥与球体的表面积与体积关系。"
+    }
+  },
+  "math": {
+    "heading": "数学公式总览（学生版）",
+    "metaTitle": "数学公式总览 — 可打印 A4",
+    "metaDescription": "涵盖算术、代数与几何的常用公式，适合课堂速查。",
+    "noteBody": "同样使用 MathML 呈现，打印或导出为 PDF 即可随身携带。",
+    "sections": {
+      "arithmetic": "算术",
+      "algebra": "代数",
+      "geometry": "几何"
+    }
+  },
+  "doubleAngle": {
+    "heading": "二倍角恒等式（高中三角函数）",
+    "metaTitle": "二倍角三角恒等式 — 可打印 A4",
+    "metaDescription": "整理正弦、余弦与正切的二倍角恒等式，便于背诵与复习。",
+    "noteBody": "使用 MathML 呈现，打印或导出 PDF 作为学习讲义。",
+    "sectionHeading": "核心恒等式"
+  }
+}

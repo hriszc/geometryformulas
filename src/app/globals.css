@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply min-h-screen bg-paper text-ink font-sans antialiased;
+}
+
+a {
+  @apply text-accent underline-offset-4 transition hover:underline;
+}
+
+.no-print {
+  @apply print:hidden;
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .page-break {
+    break-before: page;
+  }
+}
